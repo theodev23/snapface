@@ -1,0 +1,48 @@
+.form-card {
+  max-width: 760px;
+}
+form,
+.face-snap-card {
+  padding: 32px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+.form-group {
+  margin-bottom: 22px;
+}
+.optional,
+.form-help {
+  color: var(--muted);
+  font-size: 0.85rem;
+  font-weight: 400;
+}
+.form-help {
+  margin: 0 0 24px;
+}
+.action-buttons {
+  padding-top: 8px;
+}
+.face-snap-card {
+  margin-top: 28px;
+}
+.face-snap-card h2 {
+  margin: 16px 0;
+}
+.face-snap-card img {
+  width: 100%;
+  max-height: 400px;
+  object-fit: contain;
+  border-radius: 8px;
+  background: #eaf2ff;
+}
+.face-snap-card p {
+  color: var(--muted);
+  white-space: pre-line;
+}
+@media (max-width: 600px) {
+  form,
+  .face-snap-card {
+    padding: 24px;
+  }
+}

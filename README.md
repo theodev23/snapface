@@ -1,59 +1,96 @@
 # Snapface
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.27.
+Snapface est une application web de partage de photographies développée avec **Angular 21**. Elle permet de parcourir une collection de photos, de consulter leurs détails, de réagir aux publications et d'en ajouter de nouvelles.
 
-## Development server
+Ce projet a été réalisé dans le cadre des formations Angular d'**OpenClassrooms**, puis adapté à une architecture moderne fondée sur les composants *standalone*.
 
-To start a local development server, run:
+## Fonctionnalités
 
-```bash
-ng serve
+- Consultation d'une galerie de photographies et de leurs fiches détaillées.
+- Ajout ou retrait d'un « snap » sur une publication, avec mise à jour du compteur.
+- Création d'une publication à partir d'un formulaire validé, avec aperçu avant enregistrement.
+- Navigation entre les pages sans rechargement complet de l'application.
+- Lecture et mise à jour des données via une API HTTP locale.
+
+## Technologies utilisées
+
+**Frontend :** Angular 21, TypeScript, Angular Router, HttpClient, RxJS et formulaires Angular (*Reactive Forms* et *Template-driven Forms*).
+
+**Backend de démonstration :** JSON Server 0.17, qui expose une API REST locale à partir du fichier `backend/db.json`.
+
+## Architecture
+
+Le frontend est organisé par fonctionnalité et utilise des composants *standalone* :
+
+```text
+snapface/
+├── backend/
+│   ├── db.json
+│   ├── package.json
+│   └── package-lock.json
+├── src/
+│   └── app/
+│       ├── app.ts
+│       ├── app.config.ts
+│       ├── app.routes.ts
+│       ├── auth/                # Guard, service et intercepteur
+│       ├── layout/header/       # En-tête de l'application
+│       ├── landing-page/        # Page d'accueil
+│       └── face-snaps/          # Galerie, détail, création et service HTTP
+├── angular.json
+└── package.json
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+La configuration générale est centralisée dans `app.config.ts`. Les services utilisent l'injection de dépendances d'Angular. Le routage repose sur `loadComponent` et `loadChildren` pour charger les fonctionnalités à la demande (lazy loading).
 
-## Code scaffolding
+## Installation et démarrage
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+### Prérequis
 
-```bash
-ng generate component component-name
-```
+- Node.js et npm, dans des versions compatibles avec Angular 21.
+- Les dossiers `src/` et `backend/` présents dans le dépôt.
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+### 1. Démarrer le backend
 
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
+Depuis la racine du projet, ouvrir un premier terminal :
 
 ```bash
-ng build
+cd backend
+npm install
+npm start
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+L'API est disponible à l'adresse **http://localhost:3000/facesnaps**.
 
-## Running unit tests
+### 2. Démarrer le frontend
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+Ouvrir un second terminal à la racine du projet :
 
 ```bash
-ng test
+npm install
+npm start
 ```
 
-## Running end-to-end tests
+L'application est accessible à l'adresse **http://localhost:4200**.
 
-For end-to-end (e2e) testing, run:
+Le frontend utilise `http://localhost:3000` pour ses requêtes HTTP : les deux serveurs doivent donc être démarrés pour utiliser les fonctionnalités liées aux données.
+
+### Compilation
+
+Pour générer une version de production du frontend :
 
 ```bash
-ng e2e
+npm run build
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+Les fichiers compilés sont placés dans le dossier `dist/`.
 
-## Additional Resources
+## Périmètre du projet
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- Le backend repose sur **JSON Server**, qui conserve les données dans un fichier JSON local. Il ne constitue pas une API métier destinée à la production.
+- L'authentification est **simulée** : le guard et l'intercepteur illustrent des mécanismes Angular, mais le token utilisé est fictif et aucun contrôle d'accès sécurisé n'est assuré par le backend.
+- Le formulaire de newsletter de la page d'accueil est une démonstration : il n'enregistre pas d'inscription réelle.
+
+## Crédits
+
+Projet réalisé à partir des cours **« Débutez avec Angular »** et **« Complétez vos connaissances sur Angular »** d'[OpenClassrooms](https://openclassrooms.com/), avec adaptation à Angular 21 et personnalisation de l'application.

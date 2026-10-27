@@ -1,0 +1,40 @@
+<div class="page-container landing-block">
+  <section class="hero" aria-labelledby="welcome-title">
+    <div class="hero-copy">
+      <span class="eyebrow">Un regard, un instant, un partage</span>
+      <h1 id="welcome-title">Les petits instants font les beaux souvenirs.</h1>
+      <p>
+        Un paysage, une découverte, un moment qui compte. Explorez les FaceSnaps et partagez à votre
+        tour ce qui vous inspire.
+      </p>
+      <a class="button-link" routerLink="/facesnaps"
+        >Explorer les FaceSnaps <span aria-hidden="true">→</span></a
+      >
+    </div>
+    <div class="logo-panel">
+      <img src="/assets/snapface-logo.png" alt="Snapface" />
+      <p>Le plaisir de partager, tout simplement.</p>
+    </div>
+  </section>
+  <section class="newsletter" aria-labelledby="newsletter-title">
+    <div>
+      <h2 id="newsletter-title">Gardons le contact</h2>
+      <p>Inscrivez-vous pour recevoir notre newsletter.</p>
+    </div>
+    <!-- Formulaire template-driven : les données sont transmises à onSubmitForm. -->
+    <form #emailForm="ngForm" (ngSubmit)="onSubmitForm(emailForm)">
+      <label for="emailInput">Votre adresse e-mail</label>
+      <div class="email-controls">
+        <input
+          type="email"
+          id="emailInput"
+          [(ngModel)]="userEmail"
+          name="email"
+          placeholder="vous@exemple.fr"
+          autocomplete="email"
+        />
+        <button type="submit">S’inscrire</button>
+      </div>
+    </form>
+  </section>
+</div>

@@ -1,0 +1,18 @@
+<header>
+  <div class="header-inner">
+    <a class="brand" routerLink="/" aria-label="Snapface, accueil"
+      >snapface<span aria-hidden="true">.</span></a
+    >
+    <nav aria-label="Navigation principale">
+      <a
+        routerLink="/"
+        routerLinkActive="active"
+        ariaCurrentWhenActive="page"
+        [routerLinkActiveOptions]="{ exact: true }"
+        >Accueil</a
+      >
+      <a routerLink="/facesnaps" routerLinkActive="active" ariaCurrentWhenActive="page">Explorer</a>
+    </nav>
+    <button type="button" (click)="onAddNewFaceSnap()">+ Créer un FaceSnap</button>
+  </div>
+</header>

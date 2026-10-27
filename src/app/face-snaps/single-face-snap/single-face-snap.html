@@ -1,0 +1,29 @@
+@if (faceSnap$ | async; as faceSnap) {
+  <div class="page-container detail-page">
+    <a class="back-link" routerLink="/facesnaps">← Retour à la collection</a>
+    <article class="face-snap-card">
+      <img class="detail-image" [src]="faceSnap.imageUrl" [alt]="faceSnap.title" />
+      <div class="detail-content">
+        <span class="eyebrow">Un instant partagé</span>
+        <h1>{{ faceSnap.title }}</h1>
+        <p class="metadata">Publié le {{ faceSnap.createdDate | date: 'd MMMM yyyy, à HH:mm' }}</p>
+        <p class="description">{{ faceSnap.description }}</p>
+        @if (faceSnap.location) {
+          <p class="location">Lieu : {{ faceSnap.location }}</p>
+        } @else {
+          <p class="location">Lieu non précisé</p>
+        }
+        <div class="snap-actions">
+          <button
+            type="button"
+            (click)="onSnap(+faceSnap.id)"
+            [attr.aria-pressed]="buttonText !== 'Oh Snap!'"
+          >
+            {{ buttonText }}
+          </button>
+          <span class="snap-count" aria-live="polite">{{ faceSnap.snaps }} snaps</span>
+        </div>
+      </div>
+    </article>
+  </div>
+}

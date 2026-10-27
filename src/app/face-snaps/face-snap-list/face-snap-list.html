@@ -1,0 +1,12 @@
+<section class="page-container" aria-labelledby="collection-title">
+  <div class="page-heading">
+    <span class="eyebrow">La collection</span>
+    <h1 id="collection-title">Des instants à découvrir</h1>
+    <p>Explorez les photos, découvrez leur histoire et laissez un snap à vos favoris.</p>
+  </div>
+  <div class="snap-grid">
+    @for (faceSnap of faceSnaps$ | async; track faceSnap.id) {
+      <app-face-snap [faceSnap]="faceSnap"></app-face-snap>
+    }
+  </div>
+</section>

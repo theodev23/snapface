@@ -1,0 +1,45 @@
+:host {
+  display: block;
+  min-width: 0;
+}
+.face-snap-card {
+  height: 100%;
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  background: #eaf2ff;
+}
+.card-content {
+  padding: 24px;
+}
+h2 {
+  margin: 0 0 12px;
+  font-size: 1.35rem;
+}
+p {
+  color: var(--muted);
+  margin: 0 0 24px;
+}
+button {
+  gap: 18px;
+  background: #edf4ff;
+  color: var(--accent);
+}
+button:hover {
+  background: #dbeaff;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}

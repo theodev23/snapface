@@ -1,0 +1,70 @@
+<div class="page-container form-card">
+  <div class="page-heading">
+    <span class="eyebrow">À votre tour</span>
+    <h1>Partagez votre instant</h1>
+    <p>Une photo, quelques mots et un nouveau souvenir à découvrir.</p>
+  </div>
+  <!-- Les formControlName correspondent aux contrôles créés avec FormBuilder. -->
+  <form [formGroup]="snapForm">
+    <p class="form-help">Tous les champs sont obligatoires, sauf le lieu.</p>
+    <div class="form-group">
+      <label for="title">Titre</label>
+      <input
+        id="title"
+        type="text"
+        formControlName="title"
+        placeholder="Un instant à retenir"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="description">Description</label>
+      <textarea
+        id="description"
+        formControlName="description"
+        rows="4"
+        placeholder="Racontez l’histoire de cette photo…"
+        required
+      ></textarea>
+    </div>
+    <div class="form-group">
+      <label for="imageUrl">URL de l’image</label>
+      <input
+        id="imageUrl"
+        type="text"
+        inputmode="url"
+        formControlName="imageUrl"
+        placeholder="https://exemple.fr/photo.jpg"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="location">Lieu <span class="optional">(facultatif)</span></label>
+      <input
+        id="location"
+        type="text"
+        formControlName="location"
+        placeholder="Une ville, un endroit…"
+      />
+    </div>
+    <div class="action-buttons">
+      <button type="submit" (click)="onSubmitForm()" [disabled]="snapForm.invalid">
+        Publier le FaceSnap
+      </button>
+    </div>
+  </form>
+  @if (faceSnapPreview$ | async; as faceSnap) {
+    <section class="face-snap-card" aria-label="Aperçu du FaceSnap">
+      <span class="eyebrow">Aperçu de votre publication</span>
+      <h2>{{ faceSnap.title || 'Le titre de votre FaceSnap' }}</h2>
+      @if (faceSnap.imageUrl) {
+        <img [src]="faceSnap.imageUrl" [alt]="faceSnap.title || 'Aperçu de votre photo'" />
+      }
+      <p>{{ faceSnap.description }}</p>
+      @if (faceSnap.location) {
+        <p>Photo prise à {{ faceSnap.location }}</p>
+      }
+      <p>{{ faceSnap.createdDate | date: "'Le' d MMMM yyyy, 'à' HH:mm" }}</p>
+    </section>
+  }
+</div>
