@@ -12,6 +12,20 @@ Ce projet a été réalisé dans le cadre des formations Angular d'**OpenClassro
 - Navigation entre les pages sans rechargement complet de l'application.
 - Lecture et mise à jour des données via une API HTTP locale.
 
+## Aperçu de l'application
+
+### Page d'accueil
+
+<img src="docs/screenshots/accueil.png" alt="Page d'accueil de Snapface" width="800" />
+
+### Galerie de FaceSnaps
+
+<img src="docs/screenshots/listeSnapface.png" alt="Galerie de photographies Snapface" width="800" />
+
+### Détail d'une publication
+
+<img src="docs/screenshots/snapface.png" alt="Fiche détaillée d'un FaceSnap" width="800" />
+
 ## Technologies utilisées
 
 **Frontend :** Angular 21, TypeScript, Angular Router, HttpClient, RxJS et formulaires Angular (*Reactive Forms* et *Template-driven Forms*).
